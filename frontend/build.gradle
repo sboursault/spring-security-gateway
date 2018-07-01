@@ -1,0 +1,77 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.3.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'poc.security'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-web')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+
+def angularAppDir = "$projectDir/src/main/angular"
+sourceSets {
+    main {
+        resources {
+            srcDirs = ["$angularAppDir/dist", "$projectDir/src/main/resources"]
+        }
+    }
+}
+
+processResources {
+    dependsOn "ngBuild"
+}
+
+task ngBuild(type:Exec) {
+	dependsOn "npmInstall" // npmInstall should be run prior to this task
+    description "runs 'ng build'"
+	workingDir angularAppDir
+	if (System.getProperty("os.name").toUpperCase().contains("WINDOWS")){
+		commandLine 'cmd', '/c', 'ng', 'build'
+	} else {
+		commandLine 'ng', 'build'
+	}
+	//store the output instead of printing to the console:
+	standardOutput = new ByteArrayOutputStream()
+	//extension method npmInstall.output() can be used to obtain the output:
+	ext.output = {
+		return standardOutput.toString()
+	}
+}
+
+task npmInstall(type:Exec) {
+    description "runs 'npm install'"
+    workingDir angularAppDir
+	if (System.getProperty("os.name").toUpperCase().contains("WINDOWS")){
+		commandLine 'cmd', '/c', 'npm', 'install'
+	} else {
+		commandLine 'npm', 'install'
+	}
+    //store the output instead of printing to the console:
+    standardOutput = new ByteArrayOutputStream()
+    //extension method npmInstall.output() can be used to obtain the output:
+    ext.output = {
+        return standardOutput.toString()
+    }
+}
+
