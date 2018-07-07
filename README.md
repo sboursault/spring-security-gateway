@@ -31,6 +31,27 @@ in the build.gradle, declare the src/main/angular/dist as a resource folder:
             }
         }
     }
+    
+### Adding bootstrap theme
+
+Adding Bootstrap
+
+You can add basic Twitter Bootstrap features to make the app look a bit less dull (taken from this blog):
+
+    npm install bootstrap@3 jquery --save
+
+and update angular.json as follows:
+
+    "styles": [
+      "styles.css",
+      "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+    ],
+    "scripts": [
+      "../node_modules/jquery/dist/jquery.min.js",
+      "../node_modules/bootstrap/dist/js/bootstrap.min.js"
+    ],
+
+
 
 ## whisky-api
 
@@ -45,7 +66,7 @@ an api server provides a list of whiskies:
       HTTP/1.1 200 
       Content-Type: application/json;charset=UTF-8
       ...
-       [{"id":"penguin_1234","firstname":"Oswald","lastname":"Cobblepot"}, ... ]
+       [{"id":"001","name":"Cardhu Special Cask Reserve", ... ]
     
     
 ## Resources
@@ -53,3 +74,4 @@ an api server provides a list of whiskies:
 Whisky descriptions were picked from https://www.whiskyshop.com
 
 https://blog.marcnuri.com/angular-spring-boot-integration-gradle/
+https://github.com/dsyer/spring-boot-angular
