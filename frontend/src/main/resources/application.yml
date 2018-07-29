@@ -7,6 +7,12 @@ server:
   #- "*.bundle.*"
   # should be /static ?
 
+spring:
+  mvc:
+    view:
+      prefix: /
+      suffix: .html
+
 logging:
   level:
     org.springframework.security: DEBUG

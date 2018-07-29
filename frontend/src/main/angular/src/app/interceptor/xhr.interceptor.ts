@@ -4,10 +4,11 @@ import { HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http"
 /*
  * Adding Default HTTP Request Headers
  *
- * If you run the app at this point you will find that the browser pops up a Basic authentication dialogue (for user and password).
- * It does this because it sees a 401 reponse from the XHR requests to /user and /resource with a "WWW-Authenticate" header.
+ * We don't want the browser to pop up a Basic authentication dialogue (for user and password).
+ * It happens because it sees a 401 reponse from the XHR requests to /user and /resource with a "WWW-Authenticate" header.
  * The way to suppress this popup is to suppress the header, which is coming from Spring Security.
  * And the way to suppress the reponse header is to send a special, conventional request header "X-Requested-With=XMLHttpRequest".
+ * (from https://spring.io/guides/tutorials/spring-security-and-angular-js/)
  */
 @Injectable()
 export class XhrInterceptor implements HttpInterceptor {
