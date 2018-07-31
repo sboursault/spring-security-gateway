@@ -17,7 +17,7 @@ public class BannerRepository {
             .html("")
             .build();
 
-    private List<BannerResource> whiskies = List.of(
+    private List<BannerResource> banners = List.of(
             EMPTY_BANNER,
             aBannerResource()
                     .id("001")
@@ -26,11 +26,11 @@ public class BannerRepository {
     );
 
     public List<BannerResource> getAll() {
-        return whiskies;
+        return banners;
     }
 
     public BannerResource getById(String id) {
-        return whiskies
+        return banners
                 .find(it -> Objects.equals(it.getId(), id))
                 .getOrElse(EMPTY_BANNER);
     }

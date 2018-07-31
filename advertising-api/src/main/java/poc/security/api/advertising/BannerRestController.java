@@ -2,6 +2,7 @@ package poc.security.api.advertising;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import poc.security.api.advertising.resource.BannerResource;
@@ -17,7 +18,7 @@ public class BannerRestController {
     private BannerRepository bannerRepository;
 
     @GetMapping("/{id}")
-    public BannerResource get(String id) {
+    public BannerResource get(@PathVariable String id) {
         return bannerRepository.getById(id);
     }
 

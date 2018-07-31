@@ -51,11 +51,24 @@ and update angular.json as follows:
       "../node_modules/bootstrap/dist/js/bootstrap.min.js"
     ],
 
+## advertising-api
 
+The advertising-api application exposes a rest api to retrieve commercial banners.
 
-## whisky-api
+    # run the app
+    $ ./gradlew :advertising-api:bootRun
 
-an api server provides a list of whiskies:
+    # request the api   
+    $ curl -i http://localhost:8095/v1/banners/001
+    
+      HTTP/1.1 200 
+      Content-Type: application/json;charset=UTF-8
+      ...
+      {"id":"001","html":"Discover exceptional drinks on great-drinks.com !"}
+
+## drinks-api
+
+The drinks-api application exposes a rest api to retrieve whiskies.
 
     # run the server api
     $ ./gradlew :whisky-api:bootRun
@@ -66,7 +79,7 @@ an api server provides a list of whiskies:
       HTTP/1.1 200 
       Content-Type: application/json;charset=UTF-8
       ...
-       [{"id":"001","name":"Cardhu Special Cask Reserve", ... ]
+      [{"id":"001","name":"Cardhu Special Cask Reserve", ... ]
     
     
 ## Resources
