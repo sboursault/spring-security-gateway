@@ -3,16 +3,14 @@ package poc.security.api.drinks;
 import org.springframework.stereotype.Repository;
 import poc.security.api.drinks.resource.WhiskyResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import io.vavr.collection.List;
 
 import static poc.security.api.drinks.resource.WhiskyResource.Builder.aNewWhisky;
 
 @Repository
 public class WhiskyRepository {
 
-    private List<WhiskyResource> whiskies = Arrays.asList(
+    private List<WhiskyResource> whiskies = List.of(
             aNewWhisky()
                     .id("001")
                     .brand("Cardhu")
@@ -56,6 +54,6 @@ public class WhiskyRepository {
     );
 
     public List<WhiskyResource> getAll() {
-        return new ArrayList<>(whiskies);
+        return whiskies;
     }
 }
