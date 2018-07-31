@@ -1,4 +1,5 @@
 rootProject.name = 'security-parent'
 
 include ':whisky-api'
+include ':advertising-api'
 include ':frontend'

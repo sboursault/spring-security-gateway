@@ -7,7 +7,7 @@ import poc.security.api.whisky.resource.*;
 import java.util.List;
 
 /**
- * <p>A simple rest controller to expose inmates.</p>
+ * <p>A simple rest controller to expose whiskies.</p>
  */
 @RestController
 @RequestMapping("/v1/whiskies")
