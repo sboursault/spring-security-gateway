@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 
@@ -20,7 +21,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
             .httpBasic()
         .and().authorizeRequests()
-                .antMatchers("/index.html", "/", "/home", "/login", "/**.js").permitAll()
+                .antMatchers("/index.html", "/", "/home", "/login").permitAll()
                 .anyRequest().authenticated()
         .and().csrf()
                 .csrfTokenRepository(withHttpOnlyFalse());
@@ -34,11 +35,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .roles("USER");
     }
 
-    /*
+    /**
      * required to avoid IllegalArgumentException: 'There is no PasswordEncoder mapped for the id "null"'
      */
     @Bean
     public static NoOpPasswordEncoder passwordEncoder() {
         return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
+    }
+
+    /**
+     * Disable security for static content.
+     */
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/**.js", "/**.png");
     }
 }

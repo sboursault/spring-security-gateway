@@ -7,6 +7,16 @@ spring:
       prefix: /
       suffix: .html
 
+zuul:
+  routes:
+    whikies:
+      path: /**
+      url: http://localhost:8090
+
+ribbon:
+  eureka:
+    enabled: false
+
 logging:
   level:
     org.springframework.security: DEBUG

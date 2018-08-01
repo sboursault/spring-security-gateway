@@ -9,12 +9,16 @@ import { HomeComponent } from './component/home/home.component';
 import { LoginComponent } from './component/login/login.component';
 import { AppService } from './service/app.service';
 import { XhrInterceptor } from './interceptor/xhr.interceptor';
+import { WhiskyCardComponent } from './whisky-card/whisky-card.component';
+import { WhiskyListComponent } from './whisky-list/whisky-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    WhiskyCardComponent,
+    WhiskyListComponent
   ],
   imports: [
     RouterModule.forRoot([

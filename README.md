@@ -96,3 +96,5 @@ https://github.com/dsyer/spring-boot-angular
 
 - https
 - logout
+- zuul mapping (eg. /api/drinks/v1/whiskies -> another-host/v1/whiskies)
+- align spring boot versions

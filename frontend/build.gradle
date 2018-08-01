@@ -1,13 +1,13 @@
 buildscript {
-	ext {
-		springBootVersion = '2.0.3.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+    ext {
+        springBootVersion = '2.0.4.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
 
 apply plugin: 'java'
@@ -20,16 +20,25 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
-	mavenCentral()
+     mavenCentral()
+}
+
+ext {
+    springCloudVersion = 'Finchley.RELEASE'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
 }
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-web')
-
-	compile('org.springframework.boot:spring-boot-starter-security')
-
-	testCompile('org.springframework.boot:spring-boot-starter-test')
-	testCompile('org.springframework.security:spring-security-test')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-security')
+    compile('org.springframework.cloud:spring-cloud-starter-netflix-zuul')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.springframework.security:spring-security-test')
 }
 
 
@@ -47,30 +56,30 @@ processResources {
 }
 
 task ngBuild(type:Exec) {
-	dependsOn "npmInstall" // npmInstall should be run prior to this task
+    dependsOn "npmInstall" // npmInstall should be run prior to this task
     description "runs 'ng build'"
-	workingDir angularAppDir
-	if (System.getProperty("os.name").toUpperCase().contains("WINDOWS")){
-		commandLine 'cmd', '/c', 'ng', 'build'
-	} else {
-		commandLine 'ng', 'build'
-	}
-	//store the output instead of printing to the console:
-	standardOutput = new ByteArrayOutputStream()
-	//extension method npmInstall.output() can be used to obtain the output:
-	ext.output = {
-		return standardOutput.toString()
-	}
+    workingDir angularAppDir
+    if (System.getProperty("os.name").toUpperCase().contains("WINDOWS")){
+        commandLine 'cmd', '/c', 'ng', 'build'
+    } else {
+        commandLine 'ng', 'build'
+    }
+    //store the output instead of printing to the console:
+    standardOutput = new ByteArrayOutputStream()
+    //extension method npmInstall.output() can be used to obtain the output:
+    ext.output = {
+        return standardOutput.toString()
+    }
 }
 
 task npmInstall(type:Exec) {
     description "runs 'npm install'"
     workingDir angularAppDir
-	if (System.getProperty("os.name").toUpperCase().contains("WINDOWS")){
-		commandLine 'cmd', '/c', 'npm', 'install'
-	} else {
-		commandLine 'npm', 'install'
-	}
+    if (System.getProperty("os.name").toUpperCase().contains("WINDOWS")){
+        commandLine 'cmd', '/c', 'npm', 'install'
+    } else {
+        commandLine 'npm', 'install'
+    }
     //store the output instead of printing to the console:
     standardOutput = new ByteArrayOutputStream()
     //extension method npmInstall.output() can be used to obtain the output:

@@ -36,4 +36,9 @@ export class AppService {
       .get<Banner>(`http://localhost:8095/v1/banners/001`);
   }
 
+  getWhiskies(): Observable<Array<Whisky>> {
+    return this.http
+      .get<Array<Whisky>>(`http://localhost:8080/whiskies`);
+  }
+
 }
