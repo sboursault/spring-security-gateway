@@ -10,15 +10,21 @@ import { AppService } from '../../service/app.service';
 export class HomeComponent implements OnInit {
 
   title = 'Demo';
+  banner: Banner = { html: '' };
   greeting = {};
 
   constructor(private app: AppService, private http: HttpClient) {
-    http.get('resource').subscribe(data => this.greeting = data);
+    
   }
 
   authenticated() { return this.app.authenticated; }
 
   ngOnInit() {
+    this.http
+      .get('resource')
+      .subscribe(data => this.greeting = data);
+    this.app.getBanner()
+      .subscribe(data => this.banner = data);
   }
 
 }

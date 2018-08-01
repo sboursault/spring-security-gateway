@@ -1,0 +1,3 @@
+interface Banner {
+  html: string;
+}

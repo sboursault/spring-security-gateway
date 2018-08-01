@@ -65,6 +65,9 @@ The advertising-api application exposes a rest api to retrieve commercial banner
       Content-Type: application/json;charset=UTF-8
       ...
       {"id":"001","html":"Discover exceptional drinks on great-drinks.com !"}
+      
+The advertising api is called directly from the js application.
+This requires the api to support the CORS protocol, which involves a "pre-flight" OPTIONS request and some headers to list the allowed behaviour of the caller.
 
 ## drinks-api
 
@@ -88,3 +91,8 @@ Whisky descriptions were picked from https://www.whiskyshop.com
 
 https://blog.marcnuri.com/angular-spring-boot-integration-gradle/
 https://github.com/dsyer/spring-boot-angular
+
+## TODO
+
+- https
+- logout

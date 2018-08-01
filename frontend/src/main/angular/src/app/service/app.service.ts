@@ -13,11 +13,9 @@ export class AppService {
   }
 
   authenticate(credentials, callback) {
-
     const headers = new HttpHeaders(
       credentials ? { authorization : 'Basic ' + btoa(credentials.username + ':' + credentials.password) } : {}
     );
-
     this.http.get('user', {headers: headers})
       .subscribe(response => {
         if (response['name']) {
@@ -27,12 +25,15 @@ export class AppService {
         }
         return callback && callback();
       });
-
   }
-
 
   sayHello(): Observable<string> {
     return this.http.get(`/api/hello-world`, {responseType: 'text'});
+  }
+
+  getBanner(): Observable<Banner> {
+    return this.http
+      .get<Banner>(`http://localhost:8095/v1/banners/001`);
   }
 
 }

@@ -1,10 +1,7 @@
 package poc.security.api.advertising;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import poc.security.api.advertising.resource.BannerResource;
 
 /**
@@ -12,6 +9,9 @@ import poc.security.api.advertising.resource.BannerResource;
  */
 @RestController
 @RequestMapping("/v1/banners")
+@CrossOrigin(
+        origins="http://localhost:8080", // Should match with the `Origin` header value sent by the browser.
+        maxAge=3600)
 public class BannerRestController {
 
     @Autowired
