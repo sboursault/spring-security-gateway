@@ -1,11 +1,5 @@
 server:
   port: 8080
-#security:
-#  ignored:
-#  - "/**.js"
-  #- "/**"
-  #- "*.bundle.*"
-  # should be /static ?
 
 spring:
   mvc:
