@@ -10,8 +10,8 @@ spring:
 zuul:
   routes:
     whikies:
-      path: /**
-      url: http://localhost:8090
+      path: /api/whiskies/**
+      url: http://localhost:8090/v1/whiskies
 
 ribbon:
   eureka:
@@ -19,4 +19,5 @@ ribbon:
 
 logging:
   level:
+    #root: DEBUG
     org.springframework.security: DEBUG

@@ -45,9 +45,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     /**
      * Disable security for static content.
+     * Particularly, the .ico urls may trouble zuul if they are secured.
      */
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/**.js", "/**.png");
+        web.ignoring().antMatchers(
+                "/**.js",
+                "/**.png",
+                "/**.ico"
+        );
     }
 }

@@ -96,5 +96,7 @@ https://github.com/dsyer/spring-boot-angular
 
 - https
 - logout
-- zuul mapping (eg. /api/drinks/v1/whiskies -> another-host/v1/whiskies)
+- zuul mapping (eg. /api/drinks/v1/whiskies/567 -> another-host/v1/whiskies/567)
 - align spring boot versions
+- test "/trace"
+- restrict access with "server.address: 127.0.0.1"

@@ -38,7 +38,7 @@ export class AppService {
 
   getWhiskies(): Observable<Array<Whisky>> {
     return this.http
-      .get<Array<Whisky>>(`http://localhost:8080/whiskies`);
+      .get<Array<Whisky>>(`http://localhost:8080/api/whiskies`);
   }
 
 }
