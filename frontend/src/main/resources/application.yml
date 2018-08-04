@@ -8,10 +8,12 @@ spring:
       suffix: .html
 
 zuul:
+  ignoredServices: '*'
   routes:
     whikies:
       path: /api/whiskies/**
       url: http://localhost:8090/v1/whiskies
+      #serviceId: whiskies
 
 ribbon:
   eureka:
