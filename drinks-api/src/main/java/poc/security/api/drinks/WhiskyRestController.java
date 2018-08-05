@@ -1,10 +1,10 @@
 package poc.security.api.drinks;
 
+import io.vavr.collection.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import poc.security.api.drinks.resource.*;
 
-import java.util.List;
 
 /**
  * <p>A simple rest controller to expose whiskies.</p>
@@ -18,7 +18,7 @@ public class WhiskyRestController {
 
     @GetMapping
     public List<WhiskyResource> getAll() {
-        return whiskyRepository.getAll().asJava();
+        return whiskyRepository.getAll();
     }
 
 }

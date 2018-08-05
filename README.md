@@ -74,7 +74,7 @@ This requires the api to support the CORS protocol, which involves a "pre-flight
 The drinks-api application exposes a rest api to retrieve whiskies.
 
     # run the server api
-    $ ./gradlew :whisky-api:bootRun
+    $ ./gradlew :drinks-api:bootRun
 
     # request the api   
     $ curl -i http://localhost:8090/v1/whiskies
@@ -92,6 +92,8 @@ Whisky descriptions were picked from https://www.whiskyshop.com
 https://blog.marcnuri.com/angular-spring-boot-integration-gradle/
 https://github.com/dsyer/spring-boot-angular
 
+bootstrap documentation: https://getbootstrap.com/docs/4.1/getting-started/introduction/
+
 ## TODO
 
 - https
@@ -100,3 +102,4 @@ https://github.com/dsyer/spring-boot-angular
 - align spring boot versions
 - test "/trace"
 - restrict access with "server.address: 127.0.0.1"
+

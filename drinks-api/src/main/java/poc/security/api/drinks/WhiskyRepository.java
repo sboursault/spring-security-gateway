@@ -49,7 +49,7 @@ public class WhiskyRepository {
                     .price(38.0)
                     .taste("Honey Hazelnut Butterscotch Heather Fresh Fruit Toasted")
                     .description("Chivas Regal was founded in Aberdeen in 1801 by two brothers, John and James Chivas. The Chivas Brothers had a luxury store in Aberdeen from where they retailed goods they had imported from across the world. In 1843, Queen Victoria, staying at Balmoral, requested Cognac from their store but due to huge shortages of grapes in France, there was none to be had. The brothers selected from their finest whiskies to blend a whisky that would be good enough for the Queen and Chivas Regal was born.\n" +
-                            "Aged no less than 12 years, and with Speyside malt at its heart, Chivas Regal 12 year old is an unrivalled premium blended Scotch whisky.\n")
+                            "Aged no less than 12 years, and with Speyside malt at its heart, Chivas Regal 12 year old is an unrivalled premium blended Scotch whisky.")
                     .build()
     );
 
