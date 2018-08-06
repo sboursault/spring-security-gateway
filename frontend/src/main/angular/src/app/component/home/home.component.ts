@@ -23,6 +23,8 @@ export class HomeComponent implements OnInit {
     this.http
       .get('resource')
       .subscribe(data => this.greeting = data);
+
+    this.banner.html = 'loading...';
     this.app.getBanner()
       .subscribe(data => this.banner = data);
   }

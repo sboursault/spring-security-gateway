@@ -14,7 +14,6 @@ import { AppService } from './service/app.service';
 })
 export class AppComponent {
   title = 'frontend-ui';
-  result = '';
 
   constructor(private app: AppService, private http: HttpClient, private router: Router) {
     this.app.authenticate(undefined, undefined);
@@ -30,9 +29,4 @@ export class AppComponent {
     // finally from rxjs ?? and then subscribe ???
   }
 
-  private sayHello(): void {
-    this.result = 'loading...';
-    this.app.sayHello()
-      .subscribe(response => this.result = response);
-  }
 }
