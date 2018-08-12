@@ -85,7 +85,8 @@ The drinks-api application exposes a rest api to retrieve whiskies.
       [{"id":"001","name":"Cardhu Special Cask Reserve", ... ]
       
       curl -X POST --user 'frontend:secret' -d 'grant_type=password&username=bill&password=123' http://localhost:8090/oauth/token
-    
+      curl -i -H "Accept: application/json" -H "Authorization: Bearer c00f9849-15f8-4cf6-9638-468ca9780557" http://localhost:8090/v1/whiskies
+
     
 ## Resources
 
@@ -97,6 +98,7 @@ https://github.com/dsyer/spring-boot-angular
 bootstrap documentation: https://getbootstrap.com/docs/4.1/getting-started/introduction/
 
 https://spring.io/guides/tutorials/spring-security-and-angular-js/
+https://gigsterous.github.io/engineering/2017/03/01/spring-boot-4.html
 
 ## TODO
 
@@ -104,6 +106,8 @@ https://spring.io/guides/tutorials/spring-security-and-angular-js/
 - logout
 - test "/trace"
 - restrict access with "server.address: 127.0.0.1"
-- oauth2 with "Resource Owner Password Credentials" Grant
+- reduce resource visibility (eg. only my votes...)
+- client implementation
+
 
 

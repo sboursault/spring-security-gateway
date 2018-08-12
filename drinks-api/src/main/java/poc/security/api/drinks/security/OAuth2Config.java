@@ -49,6 +49,6 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 				.accessTokenValiditySeconds(expiration)
 				.scopes("read", "write")
 				.authorizedGrantTypes("password", "refresh_token")
-				.resourceIds("resource"); // ?
+				.resourceIds("drinks-resource");
 	}
 }
