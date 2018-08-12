@@ -85,7 +85,7 @@ The drinks-api application exposes a rest api to retrieve whiskies.
       [{"id":"001","name":"Cardhu Special Cask Reserve", ... ]
       
       curl -X POST --user 'frontend:secret' -d 'grant_type=password&username=bill&password=123' http://localhost:8090/oauth/token
-      curl -i -H "Accept: application/json" -H "Authorization: Bearer 776a2164-1dff-4958-bbbc-c34aa304e24a" http://localhost:8090/v1/whiskies
+      curl -i -H "Accept: application/json" -H "Authorization: Bearer f5e417ac-f4d3-480e-829f-cd4934126ec9" http://localhost:8090/v1/whiskies
 
     
 ## Resources
@@ -100,12 +100,18 @@ bootstrap documentation: https://getbootstrap.com/docs/4.1/getting-started/intro
 https://spring.io/guides/tutorials/spring-security-and-angular-js/
 https://gigsterous.github.io/engineering/2017/03/01/spring-boot-4.html
 
+https://www.baeldung.com/spring-security-oauth-jwt
+
 ## TODO
 
 - httpsd
 - logout
 - test "/trace"
 - restrict access with "server.address: 127.0.0.1"
+- separate auth and resource server
+  -> how will the resource server get the username, user groups, etc. jwt token store ?
+  
+  
 - reduce resource visibility (eg. only my votes...)
 - client implementation
 

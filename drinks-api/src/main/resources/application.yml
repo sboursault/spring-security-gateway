@@ -1,6 +1,19 @@
 server:
   port: 8090
 
+# disable security for actuator endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        # disable security for actuator endpoints
+        include: "*"
+  trace:
+    http:
+      include: "REQUEST_HEADERS, TIME_TAKEN"
+      # see org.springframework.boot.actuate.trace.http.Include for possible values
+      # body can"t be logged, consider using https://github.com/zalando/logbook
+
 logging:
   level:
     #root: DEBUG
