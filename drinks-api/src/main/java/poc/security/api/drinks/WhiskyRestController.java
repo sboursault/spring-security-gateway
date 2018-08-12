@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import poc.security.api.drinks.resource.*;
 
+import java.security.Principal;
+
 
 /**
  * <p>A simple rest controller to expose whiskies.</p>
@@ -17,7 +19,8 @@ public class WhiskyRestController {
     private WhiskyRepository whiskyRepository;
 
     @GetMapping
-    public List<WhiskyResource> getAll() {
+    public List<WhiskyResource> getAll(Principal principal) {
+        System.out.println("principal = " + principal);
         return whiskyRepository.getAll();
     }
 

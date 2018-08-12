@@ -85,7 +85,7 @@ The drinks-api application exposes a rest api to retrieve whiskies.
       [{"id":"001","name":"Cardhu Special Cask Reserve", ... ]
       
       curl -X POST --user 'frontend:secret' -d 'grant_type=password&username=bill&password=123' http://localhost:8090/oauth/token
-      curl -i -H "Accept: application/json" -H "Authorization: Bearer c00f9849-15f8-4cf6-9638-468ca9780557" http://localhost:8090/v1/whiskies
+      curl -i -H "Accept: application/json" -H "Authorization: Bearer 776a2164-1dff-4958-bbbc-c34aa304e24a" http://localhost:8090/v1/whiskies
 
     
 ## Resources

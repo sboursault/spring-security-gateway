@@ -1,4 +1,4 @@
-package poc.security.api.drinks.security;
+package poc.security.api.drinks;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -16,7 +16,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableResourceServer
-public class OAuthConfiguration extends ResourceServerConfigurerAdapter {
+public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 
     //@Bean
     //@ConfigurationProperties(prefix = "spring.datasource_oauth")
