@@ -83,6 +83,8 @@ The drinks-api application exposes a rest api to retrieve whiskies.
       Content-Type: application/json;charset=UTF-8
       ...
       [{"id":"001","name":"Cardhu Special Cask Reserve", ... ]
+      
+      curl -X POST --user 'frontend:secret' -d 'grant_type=password&username=bill&password=123' http://localhost:8090/oauth/token
     
     
 ## Resources
@@ -94,13 +96,14 @@ https://github.com/dsyer/spring-boot-angular
 
 bootstrap documentation: https://getbootstrap.com/docs/4.1/getting-started/introduction/
 
+https://spring.io/guides/tutorials/spring-security-and-angular-js/
+
 ## TODO
 
-- https
+- httpsd
 - logout
-- zuul mapping (eg. /api/drinks/v1/whiskies/567 -> another-host/v1/whiskies/567)
-- align spring boot versions
 - test "/trace"
 - restrict access with "server.address: 127.0.0.1"
+- oauth2 with "Resource Owner Password Credentials" Grant
 
 
