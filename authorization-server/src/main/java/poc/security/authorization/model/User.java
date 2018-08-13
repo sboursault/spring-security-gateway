@@ -1,4 +1,4 @@
-package poc.security.api.drinks.security;
+package poc.security.authorization.model;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

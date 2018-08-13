@@ -71,21 +71,31 @@ This requires the api to support the CORS protocol, which involves a "pre-flight
 
 ## drinks-api
 
-The drinks-api application exposes a rest api to retrieve whiskies.
+The drinks-api application exposes a rest api to retrieve whiskies. The api is protected by a JWT authentication.
 
-    # run the server api
-    $ ./gradlew :drinks-api:bootRun
+    # start the authorization server
+    ./gradlew :authorization-server:bootRun
+
+    # request an access token using the `Resource Owner Password Credentials` grant
+    curl -X POST --user 'frontend:secret' -d 'grant_type=password&username=bill&password=123' http://localhost:8000/oauth/token
+    
+      HTTP/1.1 200 
+      Content-Type: application/json;charset=UTF-8
+      ...
+      {"access_token":"<a>.<b>.<c>","token_type":"bearer","refresh_token":"...","expires_in":3599,"scope":"read write","jti":"..."}
+
+    # start the server api
+    ./gradlew :drinks-api:bootRun
 
     # request the api   
-    $ curl -i http://localhost:8090/v1/whiskies
+    curl -i -H "Accept: application/json" -H "Authorization: Bearer <a>.<b>.<c>" http://localhost:8090/v1/whiskies
     
       HTTP/1.1 200 
       Content-Type: application/json;charset=UTF-8
       ...
       [{"id":"001","name":"Cardhu Special Cask Reserve", ... ]
       
-      curl -X POST --user 'frontend:secret' -d 'grant_type=password&username=bill&password=123' http://localhost:8090/oauth/token
-      curl -i -H "Accept: application/json" -H "Authorization: Bearer f5e417ac-f4d3-480e-829f-cd4934126ec9" http://localhost:8090/v1/whiskies
+      
 
     
 ## Resources
@@ -104,16 +114,15 @@ https://www.baeldung.com/spring-security-oauth-jwt
 
 ## TODO
 
-- httpsd
+- https
 - logout
-- test "/trace"
 - restrict access with "server.address: 127.0.0.1"
-- separate auth and resource server
-  -> how will the resource server get the username, user groups, etc. jwt token store ?
-  
-  
+- JWT - check how the symetric key is handled in spring guides
+- JWT - add custom claim in JWT token (https://www.baeldung.com/spring-security-oauth-jwt (5))
 - reduce resource visibility (eg. only my votes...)
 - client implementation
+- is it possible to oblige callers to request a gateway to access a micro service
+ -> the gateway could handle the security part
 
 
 

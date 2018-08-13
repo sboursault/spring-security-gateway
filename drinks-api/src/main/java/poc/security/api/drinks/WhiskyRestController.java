@@ -20,7 +20,7 @@ public class WhiskyRestController {
 
     @GetMapping
     public List<WhiskyResource> getAll(Principal principal) {
-        System.out.println("principal = " + principal);
+        System.out.println("request from " + principal.getName()); // value picked from jwt
         return whiskyRepository.getAll();
     }
 
