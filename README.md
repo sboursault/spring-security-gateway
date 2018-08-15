@@ -12,12 +12,6 @@ ng new webapp
     ng new frontend-ui
     mv frontend-ui angular
     
-"
-
-
-    cd frontend/src/main
-    ng new frontend-ui
-    mv frontend-ui angular
 
 in angular.json, change the "outputPath" to "dist/static"
 
@@ -71,7 +65,7 @@ This requires the api to support the CORS protocol, which involves a "pre-flight
 
 ## drinks-api
 
-The drinks-api application exposes a rest api to retrieve whiskies. The api is protected by a JWT authentication.
+The drinks-api application exposes a rest api to retrieve whiskies. The api is protected by an oauth/JWT authentication.
 
     # start the authorization server
     ./gradlew :authorization-server:bootRun
@@ -82,13 +76,13 @@ The drinks-api application exposes a rest api to retrieve whiskies. The api is p
       HTTP/1.1 200 
       Content-Type: application/json;charset=UTF-8
       ...
-      {"access_token":"<a>.<b>.<c>","token_type":"bearer","refresh_token":"...","expires_in":3599,"scope":"read write","jti":"..."}
+      {"access_token":"<access-token>","token_type":"bearer","refresh_token":"...","expires_in":3599,"scope":"read write","jti":"..."}
 
     # start the server api
     ./gradlew :drinks-api:bootRun
 
     # request the api   
-    curl -i -H "Accept: application/json" -H "Authorization: Bearer <a>.<b>.<c>" http://localhost:8090/v1/whiskies
+    curl -i -H "Accept: application/json" -H "Authorization: Bearer <access-token>" http://localhost:8090/v1/whiskies
     
       HTTP/1.1 200 
       Content-Type: application/json;charset=UTF-8
@@ -96,8 +90,6 @@ The drinks-api application exposes a rest api to retrieve whiskies. The api is p
       [{"id":"001","name":"Cardhu Special Cask Reserve", ... ]
       
       
-
-    
 ## Resources
 
 Whisky descriptions were picked from https://www.whiskyshop.com
@@ -117,12 +109,13 @@ https://www.baeldung.com/spring-security-oauth-jwt
 - https
 - logout
 - restrict access with "server.address: 127.0.0.1"
-- JWT - check how the symetric key is handled in spring guides
+- JWT use asymetric key
 - JWT - add custom claim in JWT token (https://www.baeldung.com/spring-security-oauth-jwt (5))
 - reduce resource visibility (eg. only my votes...)
 - client implementation
 - is it possible to oblige callers to request a gateway to access a micro service
- -> the gateway could handle the security part
+ -> the gateway could handle all the security concerns
+- tester le debugger de jwt.io
 
 
 

@@ -26,8 +26,6 @@ repositories {
 }
 
 dependencies {
-    compile('io.vavr:vavr:0.9.2')
-    compile("io.vavr:vavr-jackson:0.9.2")
     compile('org.springframework.boot:spring-boot-starter-security')
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.security.oauth:spring-security-oauth2:2.3.3.RELEASE')
