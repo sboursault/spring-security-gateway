@@ -109,12 +109,14 @@ https://www.baeldung.com/spring-security-oauth-jwt
 - https
 - logout
 - restrict access with "server.address: 127.0.0.1"
+-> see spring tuto
 - JWT use asymetric key
 - JWT - add custom claim in JWT token (https://www.baeldung.com/spring-security-oauth-jwt (5))
 - reduce resource visibility (eg. only my votes...)
 - client implementation
 - is it possible to oblige callers to request a gateway to access a micro service
  -> the gateway could handle all the security concerns
+ -> the gateway should enableResourceServer to ask for an authentication if missing
 - tester le debugger de jwt.io
 
 

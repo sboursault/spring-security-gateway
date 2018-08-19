@@ -14,7 +14,8 @@ zuul:
       path: /api/whiskies/**
       url: http://localhost:8090/v1/whiskies
       #serviceId: whiskies
-
+      # no headers are sensitive, all of them must be forwarded
+      sensitive-headers:
 ribbon:
   eureka:
     enabled: false
