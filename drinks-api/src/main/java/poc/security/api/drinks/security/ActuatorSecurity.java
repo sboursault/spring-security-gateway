@@ -1,4 +1,4 @@
-package poc.security.api.drinks;
+package poc.security.api.drinks.security;
 
 import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.context.annotation.Configuration;
@@ -15,8 +15,13 @@ public class ActuatorSecurity extends WebSecurityConfigurerAdapter {
 	 */
 	@Override
     protected void configure(HttpSecurity http) throws Exception {
-		http.requestMatcher(EndpointRequest.toAnyEndpoint()).authorizeRequests()
-			.anyRequest().permitAll();
+		http.requestMatcher(actuatorEndpoints())
+				.authorizeRequests()
+			            .anyRequest().permitAll();
+	}
+
+	private EndpointRequest.EndpointRequestMatcher actuatorEndpoints() {
+		return EndpointRequest.toAnyEndpoint();
 	}
 
 }

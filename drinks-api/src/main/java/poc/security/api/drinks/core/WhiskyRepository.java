@@ -1,4 +1,4 @@
-package poc.security.api.drinks;
+package poc.security.api.drinks.core;
 
 import org.springframework.stereotype.Repository;
 import poc.security.api.drinks.resource.WhiskyResource;

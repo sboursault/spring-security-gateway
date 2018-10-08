@@ -1,6 +1,6 @@
 package poc.security.api.drinks.security;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -11,29 +11,17 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
-
-import javax.sql.DataSource;
-
 
 @Configuration
 @EnableResourceServer
 public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 
-    //@Bean
-    //@ConfigurationProperties(prefix = "spring.datasource_oauth")
-    //public DataSource oauthDataSource() {
-    //    return DataSourceBuilder.create().build();
-    //}
-
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
-        //TokenStore tokenStore = new JdbcTokenStore(oauthDataSource());
         resources.resourceId("drinks-resource")
-                .tokenServices(tokenServices())/*
-                .tokenStore(tokenStore)*/;
+                .tokenServices(tokenServices());
     }
 
     //@Override
@@ -48,10 +36,24 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
     //            .antMatchers(HttpMethod.OPTIONS, "/**").permitAll();
     //}
 
+    @Override
+    public void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+                .anyRequest().access("isAuthenticated() and hasIpAddress('127.0.0.0/24')");
+
+        // reminder :
+        // IP/Netmask 127.0.0.0/24 will match req.getRemoteAddr() like 127.0.0.*
+        //            127.0.0.0/16            req.getRemoteAddr() like 127.0.*.*
+        //            127.0.0.0/8             req.getRemoteAddr() like 127.*.*.*
+
+        // access is evaluated using org.springframework.security.web.access.expression.WebSecurityExpressionRoot
+    }
+
 
     @Bean
     public TokenStore tokenStore() {
         return new JwtTokenStore(accessTokenConverter());
+        // could be a JdbcTokenStore
     }
 
     @Bean

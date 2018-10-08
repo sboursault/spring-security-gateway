@@ -100,9 +100,13 @@ https://github.com/dsyer/spring-boot-angular
 bootstrap documentation: https://getbootstrap.com/docs/4.1/getting-started/introduction/
 
 https://spring.io/guides/tutorials/spring-security-and-angular-js/
+https://spring.io/guides/tutorials/spring-boot-oauth2/
 https://gigsterous.github.io/engineering/2017/03/01/spring-boot-4.html
+https://www.baeldung.com/spring-security-5-oauth2-login
+https://www.baeldung.com/sso-spring-security-oauth2
 
 https://www.baeldung.com/spring-security-oauth-jwt
+
 
 ## TODO
 
